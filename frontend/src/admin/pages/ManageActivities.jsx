@@ -107,9 +107,9 @@ export default function ManageActivities() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-display font-bold text-2xl">Class Activities</h1>
-          <p className="mt-1 text-sm text-white/50">Create, edit and publish classroom activities.</p>
+          <p className="mt-1 text-sm text-brand-ink/50">Create, edit and publish classroom activities.</p>
         </div>
-        <button onClick={startNew} className="rounded-full bg-cyan-400 text-navy-950 text-sm font-semibold px-4 py-2">
+        <button onClick={startNew} className="rounded-full bg-brand-green-500 text-white text-sm font-semibold px-4 py-2">
           + New Activity
         </button>
       </div>
@@ -121,40 +121,40 @@ export default function ManageActivities() {
               key={a.id}
               onClick={() => startEdit(a)}
               className={`w-full text-left rounded-lg border px-3 py-2.5 text-sm transition-colors ${
-                selected === a.id ? "border-cyan-400 bg-cyan-400/10" : "border-white/10 bg-navy-800/40 hover:bg-white/5"
+                selected === a.id ? "border-brand-green-600 bg-brand-green-500/10" : "border-black/10 bg-white/50 hover:bg-black/5"
               }`}
             >
               <p className="font-medium truncate">{a.title}</p>
-              <p className="mt-0.5 text-xs text-white/40 flex items-center gap-2">
+              <p className="mt-0.5 text-xs text-brand-ink/40 flex items-center gap-2">
                 <StatusBadge status={a.status} />
                 {a.category}
               </p>
             </button>
           ))}
-          {activities.length === 0 && <p className="text-sm text-white/30">No activities yet.</p>}
+          {activities.length === 0 && <p className="text-sm text-brand-ink/40">No activities yet.</p>}
         </div>
 
         {selected && (
-          <div className="rounded-xl border border-white/10 bg-navy-800/40 p-6">
+          <div className="rounded-xl border border-black/10 bg-white/50 p-6">
             <form onSubmit={handleSave} className="space-y-4">
               <Field label="Title" required value={form.title} onChange={(v) => setForm((f) => ({ ...f, title: v }))} />
               <div>
-                <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">Description</label>
+                <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">Description</label>
                 <textarea
                   rows={3}
                   value={form.description}
                   onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-                  className="w-full rounded-lg bg-navy-950 border border-white/10 px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400"
+                  className="w-full rounded-lg bg-brand-paper border border-black/10 px-4 py-2.5 text-sm focus:outline-none focus:border-brand-green-600"
                 />
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <Field label="Date" type="date" required value={form.date} onChange={(v) => setForm((f) => ({ ...f, date: v }))} />
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">Category</label>
+                  <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">Category</label>
                   <select
                     value={form.category}
                     onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
-                    className="w-full rounded-lg bg-navy-950 border border-white/10 px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400"
+                    className="w-full rounded-lg bg-brand-paper border border-black/10 px-4 py-2.5 text-sm focus:outline-none focus:border-brand-green-600"
                   >
                     {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
                   </select>
@@ -172,11 +172,11 @@ export default function ManageActivities() {
                   Featured
                 </label>
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">Status</label>
+                  <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">Status</label>
                   <select
                     value={form.status}
                     onChange={(e) => setForm((f) => ({ ...f, status: e.target.value }))}
-                    className="rounded-lg bg-navy-950 border border-white/10 px-4 py-2 text-sm focus:outline-none focus:border-cyan-400"
+                    className="rounded-lg bg-brand-paper border border-black/10 px-4 py-2 text-sm focus:outline-none focus:border-brand-green-600"
                   >
                     <option value="draft">Draft</option>
                     <option value="review">Review</option>
@@ -185,14 +185,14 @@ export default function ManageActivities() {
                 </div>
               </div>
 
-              {error && <p className="text-sm text-red-400">{error}</p>}
+              {error && <p className="text-sm text-red-600">{error}</p>}
 
               <div className="flex items-center gap-3 pt-2">
-                <button type="submit" disabled={saving} className="rounded-full bg-gradient-to-r from-electric-500 to-cyan-400 px-6 py-2.5 text-sm font-semibold text-navy-950 disabled:opacity-50">
+                <button type="submit" disabled={saving} className="rounded-full bg-gradient-to-r from-brand-green-500 to-brand-red-500 px-6 py-2.5 text-sm font-semibold text-white disabled:opacity-50">
                   {saving ? "Saving…" : "Save"}
                 </button>
                 {selected !== "new" && (
-                  <button type="button" onClick={() => handleDelete(selected)} className="text-sm text-red-400 hover:underline">
+                  <button type="button" onClick={() => handleDelete(selected)} className="text-sm text-red-600 hover:underline">
                     Delete Activity
                   </button>
                 )}
@@ -200,16 +200,16 @@ export default function ManageActivities() {
             </form>
 
             {selected !== "new" && (
-              <div className="mt-8 border-t border-white/10 pt-6">
+              <div className="mt-8 border-t border-black/10 pt-6">
                 <h3 className="font-display font-semibold text-sm">Photos & Videos</h3>
-                <label className="mt-3 inline-block cursor-pointer rounded-lg border border-dashed border-white/20 px-4 py-3 text-xs text-white/50 hover:border-cyan-400">
+                <label className="mt-3 inline-block cursor-pointer rounded-lg border border-dashed border-black/15 px-4 py-3 text-xs text-brand-ink/50 hover:border-brand-green-600">
                   {uploading ? "Uploading…" : "Click to upload photos or videos"}
                   <input type="file" multiple accept="image/*,video/*" onChange={handleUpload} className="hidden" disabled={uploading} />
                 </label>
 
                 <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 gap-3">
                   {media.map((m) => (
-                    <div key={m.id} className="relative rounded-lg overflow-hidden bg-navy-900 aspect-square group">
+                    <div key={m.id} className="relative rounded-lg overflow-hidden bg-brand-mist aspect-square group">
                       {m.media_type === "photo" ? (
                         <img src={m.file_url} alt={m.caption || ""} className="h-full w-full object-cover" />
                       ) : (
@@ -223,7 +223,7 @@ export default function ManageActivities() {
                       </button>
                     </div>
                   ))}
-                  {media.length === 0 && <p className="text-xs text-white/30 col-span-full">No media uploaded yet.</p>}
+                  {media.length === 0 && <p className="text-xs text-brand-ink/40 col-span-full">No media uploaded yet.</p>}
                 </div>
               </div>
             )}
@@ -236,9 +236,9 @@ export default function ManageActivities() {
 
 function StatusBadge({ status }) {
   const colors = {
-    draft: "bg-white/10 text-white/50",
+    draft: "bg-black/5 text-brand-ink/50",
     review: "bg-yellow-400/20 text-yellow-300",
-    published: "bg-cyan-400/20 text-cyan-300",
+    published: "bg-brand-green-500/15 text-brand-green-500",
   };
   return <span className={`rounded-full px-2 py-0.5 text-[10px] uppercase tracking-wide ${colors[status]}`}>{status}</span>;
 }
@@ -246,13 +246,13 @@ function StatusBadge({ status }) {
 function Field({ label, required, type = "text", value, onChange }) {
   return (
     <div>
-      <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">{label}</label>
+      <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">{label}</label>
       <input
         type={type}
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg bg-navy-950 border border-white/10 px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400"
+        className="w-full rounded-lg bg-brand-paper border border-black/10 px-4 py-2.5 text-sm focus:outline-none focus:border-brand-green-600"
       />
     </div>
   );

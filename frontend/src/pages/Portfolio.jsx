@@ -24,9 +24,9 @@ export default function Portfolio() {
     <section className="pt-32 pb-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-cyan-400 text-sm font-semibold tracking-[0.2em] uppercase">Student Project Portfolio</p>
+          <p className="text-brand-green-600 text-sm font-semibold tracking-[0.2em] uppercase">Student Project Portfolio</p>
           <h1 className="mt-3 font-display font-bold text-3xl md:text-5xl">What Our Students Built</h1>
-          <p className="mt-4 text-white/60">
+          <p className="mt-4 text-brand-ink/60">
             Real applications built with Python, Scratch, Artificial Intelligence and Hercules AI.
           </p>
         </div>
@@ -37,7 +37,7 @@ export default function Portfolio() {
               key={c}
               onClick={() => setCategory(c)}
               className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
-                category === c ? "bg-cyan-400 text-navy-950" : "bg-white/5 text-white/60 hover:bg-white/10"
+                category === c ? "bg-brand-green-500 text-white" : "bg-black/5 text-brand-ink/60 hover:bg-black/5"
               }`}
             >
               {c}
@@ -45,10 +45,10 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {loading && <p className="mt-16 text-center text-white/40">Loading projects…</p>}
-        {error && <p className="mt-16 text-center text-white/40">{error}</p>}
+        {loading && <p className="mt-16 text-center text-brand-ink/40">Loading projects…</p>}
+        {error && <p className="mt-16 text-center text-brand-ink/40">{error}</p>}
         {!loading && !error && projects.length === 0 && (
-          <p className="mt-16 text-center text-white/40">No projects published in this category yet.</p>
+          <p className="mt-16 text-center text-brand-ink/40">No projects published in this category yet.</p>
         )}
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

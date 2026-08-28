@@ -46,9 +46,9 @@ export default function Gallery() {
     <section className="pt-32 pb-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-cyan-400 text-sm font-semibold tracking-[0.2em] uppercase">Class Activities</p>
+          <p className="text-brand-green-600 text-sm font-semibold tracking-[0.2em] uppercase">Class Activities</p>
           <h1 className="mt-3 font-display font-bold text-3xl md:text-5xl">See Our Young Tech Creators in Action</h1>
-          <p className="mt-4 text-white/60">
+          <p className="mt-4 text-brand-ink/60">
             Photos and short video clips from the classroom — real learning, real projects, real creativity.
           </p>
         </div>
@@ -60,8 +60,8 @@ export default function Gallery() {
               onClick={() => setCategory(c)}
               className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
                 category === c
-                  ? "bg-cyan-400 text-navy-950"
-                  : "bg-white/5 text-white/60 hover:bg-white/10"
+                  ? "bg-brand-green-500 text-white"
+                  : "bg-black/5 text-brand-ink/60 hover:bg-black/5"
               }`}
             >
               {c}
@@ -69,10 +69,10 @@ export default function Gallery() {
           ))}
         </div>
 
-        {loading && <p className="mt-16 text-center text-white/40">Loading activities…</p>}
-        {error && <p className="mt-16 text-center text-white/40">{error}</p>}
+        {loading && <p className="mt-16 text-center text-brand-ink/40">Loading activities…</p>}
+        {error && <p className="mt-16 text-center text-brand-ink/40">{error}</p>}
         {!loading && !error && activities.length === 0 && (
-          <p className="mt-16 text-center text-white/40">No activities published in this category yet.</p>
+          <p className="mt-16 text-center text-brand-ink/40">No activities published in this category yet.</p>
         )}
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -84,7 +84,7 @@ export default function Gallery() {
         {albums.length > 0 && (
           <div className="mt-20">
             <div className="text-center max-w-2xl mx-auto">
-              <p className="text-cyan-400 text-sm font-semibold tracking-[0.2em] uppercase">More Photos & Videos</p>
+              <p className="text-brand-green-600 text-sm font-semibold tracking-[0.2em] uppercase">More Photos & Videos</p>
               <h2 className="mt-2 font-display font-bold text-2xl md:text-3xl">Gallery Albums</h2>
             </div>
             <div className="mt-10 space-y-14">
@@ -107,7 +107,7 @@ function AlbumSection({ album }) {
   return (
     <div>
       <h3 className="font-display font-semibold text-lg">{album.title}</h3>
-      {album.category && <p className="text-xs text-cyan-400 mt-1">{album.category}</p>}
+      {album.category && <p className="text-xs text-brand-green-600 mt-1">{album.category}</p>}
 
       {videos.length > 0 && (
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -123,7 +123,7 @@ function AlbumSection({ album }) {
             <button
               key={p.id}
               onClick={() => setLightboxIndex(i)}
-              className="aspect-square rounded-lg overflow-hidden bg-navy-800 hover:opacity-80 transition-opacity"
+              className="aspect-square rounded-lg overflow-hidden bg-white hover:opacity-80 transition-opacity"
             >
               <img src={p.file_url} alt={p.caption || album.title} loading="lazy" className="h-full w-full object-cover" />
             </button>
@@ -132,7 +132,7 @@ function AlbumSection({ album }) {
       )}
 
       {photos.length === 0 && videos.length === 0 && (
-        <p className="mt-3 text-sm text-white/30">No media in this album yet.</p>
+        <p className="mt-3 text-sm text-brand-ink/40">No media in this album yet.</p>
       )}
 
       {lightboxIndex !== null && (

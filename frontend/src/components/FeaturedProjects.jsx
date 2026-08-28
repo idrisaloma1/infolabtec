@@ -17,11 +17,11 @@ export default function FeaturedProjects() {
   if (projects.length === 0) return null;
 
   return (
-    <section className="py-20 md:py-28 bg-navy-900/40">
+    <section className="py-20 md:py-28 bg-brand-mist/60">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div ref={ref} className="reveal text-center max-w-2xl mx-auto">
           <h2 className="font-display font-bold text-3xl md:text-4xl">Featured Student Projects</h2>
-          <p className="mt-3 text-white/60">Real applications, built by real students.</p>
+          <p className="mt-3 text-brand-ink/60">Real applications, built by real students.</p>
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -31,7 +31,7 @@ export default function FeaturedProjects() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link to="/portfolio" className="inline-flex rounded-full border border-white/20 px-6 py-3 text-sm font-semibold hover:bg-white/10 transition">
+          <Link to="/portfolio" className="inline-flex rounded-full border border-black/15 px-6 py-3 text-sm font-semibold hover:bg-black/5 transition">
             View All Projects
           </Link>
         </div>

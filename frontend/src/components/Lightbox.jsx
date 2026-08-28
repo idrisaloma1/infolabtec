@@ -21,7 +21,7 @@ export default function Lightbox({ photos, index, onClose, onNavigate }) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-navy-950/95 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] bg-brand-ink/95 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -29,7 +29,7 @@ export default function Lightbox({ photos, index, onClose, onNavigate }) {
       <button
         aria-label="Close"
         onClick={onClose}
-        className="absolute top-5 right-5 h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xl"
+        className="absolute top-5 right-5 h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl"
       >
         ✕
       </button>
@@ -42,7 +42,7 @@ export default function Lightbox({ photos, index, onClose, onNavigate }) {
               e.stopPropagation();
               onNavigate((index - 1 + photos.length) % photos.length);
             }}
-            className="absolute left-3 md:left-6 h-11 w-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xl"
+            className="absolute left-3 md:left-6 h-11 w-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl"
           >
             ‹
           </button>
@@ -52,7 +52,7 @@ export default function Lightbox({ photos, index, onClose, onNavigate }) {
               e.stopPropagation();
               onNavigate((index + 1) % photos.length);
             }}
-            className="absolute right-3 md:right-6 h-11 w-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xl"
+            className="absolute right-3 md:right-6 h-11 w-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl"
           >
             ›
           </button>
@@ -65,8 +65,8 @@ export default function Lightbox({ photos, index, onClose, onNavigate }) {
           alt={photo.caption || "Activity photo"}
           className="w-full max-h-[80vh] object-contain rounded-lg"
         />
-        {photo.caption && <p className="mt-3 text-center text-sm text-white/60">{photo.caption}</p>}
-        <p className="mt-1 text-center text-xs text-white/30">
+        {photo.caption && <p className="mt-3 text-center text-sm text-white/70">{photo.caption}</p>}
+        <p className="mt-1 text-center text-xs text-white/40">
           {index + 1} / {photos.length}
         </p>
       </div>

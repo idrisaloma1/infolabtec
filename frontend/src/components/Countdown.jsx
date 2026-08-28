@@ -21,8 +21,8 @@ export default function Countdown({ targetDate }) {
 
   if (!timeLeft) {
     return (
-      <div className="rounded-2xl border border-white/10 bg-navy-800/60 px-8 py-6 text-center">
-        <p className="font-display font-bold text-xl text-cyan-400">EVENT COMPLETED</p>
+      <div className="rounded-2xl border border-black/10 bg-white/70 px-8 py-6 text-center">
+        <p className="font-display font-bold text-xl text-brand-green-600">EVENT COMPLETED</p>
       </div>
     );
   }
@@ -37,11 +37,11 @@ export default function Countdown({ targetDate }) {
   return (
     <div className="flex justify-center gap-3 md:gap-5">
       {units.map((u) => (
-        <div key={u.label} className="w-16 md:w-24 rounded-xl border border-white/10 bg-navy-800/60 py-4 text-center">
-          <div className="font-display font-bold text-2xl md:text-4xl text-cyan-400 tabular-nums">
+        <div key={u.label} className="w-16 md:w-24 rounded-xl border border-black/10 bg-white/70 py-4 text-center">
+          <div className="font-display font-bold text-2xl md:text-4xl text-brand-green-600 tabular-nums">
             {String(u.value).padStart(2, "0")}
           </div>
-          <div className="mt-1 text-[10px] md:text-xs uppercase tracking-wider text-white/50">{u.label}</div>
+          <div className="mt-1 text-[10px] md:text-xs uppercase tracking-wider text-brand-ink/50">{u.label}</div>
         </div>
       ))}
     </div>

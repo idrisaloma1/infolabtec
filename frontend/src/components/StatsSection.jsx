@@ -29,7 +29,7 @@ function Counter({ value }) {
   }, [value]);
 
   return (
-    <span ref={ref} className="text-4xl md:text-5xl font-display font-bold text-cyan-400">
+    <span ref={ref} className="text-4xl md:text-5xl font-display font-bold text-brand-green-600">
       {display}+
     </span>
   );
@@ -57,12 +57,12 @@ export default function StatsSection() {
   }, []);
 
   return (
-    <section className="border-y border-white/10 bg-navy-900/60">
+    <section className="border-y border-black/10 bg-brand-mist/70">
       <div className="mx-auto max-w-7xl px-5 lg:px-8 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((s) => (
           <div key={s.key}>
             <Counter value={s.value} />
-            <p className="mt-2 text-xs md:text-sm uppercase tracking-wider text-white/60">{s.label}</p>
+            <p className="mt-2 text-xs md:text-sm uppercase tracking-wider text-brand-ink/60">{s.label}</p>
           </div>
         ))}
       </div>

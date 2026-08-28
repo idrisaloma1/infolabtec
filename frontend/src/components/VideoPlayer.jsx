@@ -35,12 +35,12 @@ export default function VideoPlayer({ video }) {
           aria-label="Play video"
           className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors"
         >
-          <span className="h-16 w-16 rounded-full bg-white/90 flex items-center justify-center text-2xl text-navy-950">
+          <span className="h-16 w-16 rounded-full bg-white/90 flex items-center justify-center text-2xl text-brand-ink">
             ▶
           </span>
         </button>
       )}
-      {video.caption && <p className="px-3 py-2 text-xs text-white/60 bg-navy-900">{video.caption}</p>}
+      {video.caption && <p className="px-3 py-2 text-xs text-white/60 bg-black">{video.caption}</p>}
     </div>
   );
 }

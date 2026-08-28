@@ -22,8 +22,8 @@ export default function ActivityDetail() {
   if (error) {
     return (
       <section className="pt-32 pb-24 text-center px-5">
-        <p className="text-white/60">{error}</p>
-        <Link to="/gallery" className="mt-4 inline-block text-cyan-400 hover:underline">
+        <p className="text-brand-ink/60">{error}</p>
+        <Link to="/gallery" className="mt-4 inline-block text-brand-green-600 hover:underline">
           ← Back to Class Activities
         </Link>
       </section>
@@ -33,7 +33,7 @@ export default function ActivityDetail() {
   if (!data) {
     return (
       <section className="pt-32 pb-24 text-center">
-        <p className="text-white/40">Loading…</p>
+        <p className="text-brand-ink/40">Loading…</p>
       </section>
     );
   }
@@ -50,14 +50,14 @@ export default function ActivityDetail() {
   return (
     <section className="pt-32 pb-24">
       <div className="mx-auto max-w-5xl px-5 lg:px-8">
-        <Link to="/gallery" className="text-sm text-cyan-400 hover:underline">
+        <Link to="/gallery" className="text-sm text-brand-green-600 hover:underline">
           ← Back to Class Activities
         </Link>
 
-        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-white/50">
+        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-brand-ink/50">
           <span>{dateLabel}</span>
           <span aria-hidden="true">•</span>
-          <span className="text-cyan-400">{activity.category}</span>
+          <span className="text-brand-green-600">{activity.category}</span>
           {activity.trainer && (
             <>
               <span aria-hidden="true">•</span>
@@ -67,12 +67,12 @@ export default function ActivityDetail() {
         </div>
 
         <h1 className="mt-3 font-display font-bold text-3xl md:text-4xl">{activity.title}</h1>
-        {activity.description && <p className="mt-4 text-white/70 leading-relaxed max-w-3xl">{activity.description}</p>}
+        {activity.description && <p className="mt-4 text-brand-ink/70 leading-relaxed max-w-3xl">{activity.description}</p>}
 
         {activity.technologies?.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {activity.technologies.map((t) => (
-              <span key={t} className="rounded-full bg-white/5 px-3 py-1 text-xs text-white/60">
+              <span key={t} className="rounded-full bg-black/5 px-3 py-1 text-xs text-brand-ink/60">
                 {t}
               </span>
             ))}
@@ -84,7 +84,7 @@ export default function ActivityDetail() {
             href={activity.activity_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-block text-sm text-cyan-400 hover:underline"
+            className="mt-4 inline-block text-sm text-brand-green-600 hover:underline"
           >
             View related link ↗
           </a>
@@ -109,7 +109,7 @@ export default function ActivityDetail() {
                 <button
                   key={p.id}
                   onClick={() => setLightboxIndex(i)}
-                  className="aspect-square rounded-lg overflow-hidden bg-navy-800 hover:opacity-80 transition-opacity"
+                  className="aspect-square rounded-lg overflow-hidden bg-white hover:opacity-80 transition-opacity"
                 >
                   <img src={p.file_url} alt={p.caption || activity.title} loading="lazy" className="h-full w-full object-cover" />
                 </button>

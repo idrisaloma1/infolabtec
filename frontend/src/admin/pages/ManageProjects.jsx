@@ -84,9 +84,9 @@ export default function ManageProjects() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-display font-bold text-2xl">Portfolio</h1>
-          <p className="mt-1 text-sm text-white/50">Manage student projects shown on the site.</p>
+          <p className="mt-1 text-sm text-brand-ink/50">Manage student projects shown on the site.</p>
         </div>
-        <button onClick={startNew} className="rounded-full bg-cyan-400 text-navy-950 text-sm font-semibold px-4 py-2">
+        <button onClick={startNew} className="rounded-full bg-brand-green-500 text-white text-sm font-semibold px-4 py-2">
           + New Project
         </button>
       </div>
@@ -98,39 +98,39 @@ export default function ManageProjects() {
               key={p.id}
               onClick={() => startEdit(p)}
               className={`w-full text-left rounded-lg border px-3 py-2.5 text-sm transition-colors ${
-                selected === p.id ? "border-cyan-400 bg-cyan-400/10" : "border-white/10 bg-navy-800/40 hover:bg-white/5"
+                selected === p.id ? "border-brand-green-600 bg-brand-green-500/10" : "border-black/10 bg-white/50 hover:bg-black/5"
               }`}
             >
               <p className="font-medium truncate">{p.title}</p>
-              <p className="mt-0.5 text-xs text-white/40">{p.student_name} · {p.published ? "Published" : "Unpublished"}</p>
+              <p className="mt-0.5 text-xs text-brand-ink/40">{p.student_name} · {p.published ? "Published" : "Unpublished"}</p>
             </button>
           ))}
-          {projects.length === 0 && <p className="text-sm text-white/30">No projects yet.</p>}
+          {projects.length === 0 && <p className="text-sm text-brand-ink/40">No projects yet.</p>}
         </div>
 
         {selected && (
-          <form onSubmit={handleSave} className="rounded-xl border border-white/10 bg-navy-800/40 p-6 space-y-4">
+          <form onSubmit={handleSave} className="rounded-xl border border-black/10 bg-white/50 p-6 space-y-4">
             <div className="grid sm:grid-cols-2 gap-4">
               <Field label="Project Title" required value={form.title} onChange={(v) => setForm((f) => ({ ...f, title: v }))} />
               <Field label="Student Name" required value={form.student_name} onChange={(v) => setForm((f) => ({ ...f, student_name: v }))} />
             </div>
             <div>
-              <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">Description</label>
+              <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">Description</label>
               <textarea
                 rows={3}
                 value={form.description}
                 onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-                className="w-full rounded-lg bg-navy-950 border border-white/10 px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400"
+                className="w-full rounded-lg bg-brand-paper border border-black/10 px-4 py-2.5 text-sm focus:outline-none focus:border-brand-green-600"
               />
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               <Field label="Technology" value={form.technology} onChange={(v) => setForm((f) => ({ ...f, technology: v }))} />
               <div>
-                <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">Category</label>
+                <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">Category</label>
                 <select
                   value={form.category}
                   onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
-                  className="w-full rounded-lg bg-navy-950 border border-white/10 px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400"
+                  className="w-full rounded-lg bg-brand-paper border border-black/10 px-4 py-2.5 text-sm focus:outline-none focus:border-brand-green-600"
                 >
                   {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
                 </select>
@@ -142,27 +142,27 @@ export default function ManageProjects() {
               <Field label="Demo URL" value={form.demo_url} onChange={(v) => setForm((f) => ({ ...f, demo_url: v }))} />
               <Field label="GitHub URL" value={form.github_url} onChange={(v) => setForm((f) => ({ ...f, github_url: v }))} />
               <div>
-                <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">
-                  Video Demo URL <span className="normal-case text-white/30">(paste a YouTube/Vimeo link)</span>
+                <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">
+                  Video Demo URL <span className="normal-case text-brand-ink/40">(paste a YouTube/Vimeo link)</span>
                 </label>
                 <input
                   value={form.video_url}
                   onChange={(e) => setForm((f) => ({ ...f, video_url: e.target.value }))}
-                  className="w-full rounded-lg bg-navy-950 border border-white/10 px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400"
+                  className="w-full rounded-lg bg-brand-paper border border-black/10 px-4 py-2.5 text-sm focus:outline-none focus:border-brand-green-600"
                 />
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">Screenshot (image)</label>
-                <input type="file" accept="image/*" onChange={(e) => setScreenshot(e.target.files[0])} className="text-xs text-white/50" />
+                <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">Screenshot (image)</label>
+                <input type="file" accept="image/*" onChange={(e) => setScreenshot(e.target.files[0])} className="text-xs text-brand-ink/50" />
               </div>
               <div>
-                <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">
-                  Or Upload a Video File <span className="normal-case text-white/30">(mp4, webm, mov — replaces the URL above)</span>
+                <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">
+                  Or Upload a Video File <span className="normal-case text-brand-ink/40">(mp4, webm, mov — replaces the URL above)</span>
                 </label>
-                <input type="file" accept="video/mp4,video/webm,video/quicktime" onChange={(e) => setVideoFile(e.target.files[0])} className="text-xs text-white/50" />
+                <input type="file" accept="video/mp4,video/webm,video/quicktime" onChange={(e) => setVideoFile(e.target.files[0])} className="text-xs text-brand-ink/50" />
               </div>
             </div>
 
@@ -177,14 +177,14 @@ export default function ManageProjects() {
               </label>
             </div>
 
-            {error && <p className="text-sm text-red-400">{error}</p>}
+            {error && <p className="text-sm text-red-600">{error}</p>}
 
             <div className="flex items-center gap-3 pt-2">
-              <button type="submit" disabled={saving} className="rounded-full bg-gradient-to-r from-electric-500 to-cyan-400 px-6 py-2.5 text-sm font-semibold text-navy-950 disabled:opacity-50">
+              <button type="submit" disabled={saving} className="rounded-full bg-gradient-to-r from-brand-green-500 to-brand-red-500 px-6 py-2.5 text-sm font-semibold text-white disabled:opacity-50">
                 {saving ? "Saving…" : "Save"}
               </button>
               {selected !== "new" && (
-                <button type="button" onClick={() => handleDelete(selected)} className="text-sm text-red-400 hover:underline">
+                <button type="button" onClick={() => handleDelete(selected)} className="text-sm text-red-600 hover:underline">
                   Delete Project
                 </button>
               )}
@@ -199,12 +199,12 @@ export default function ManageProjects() {
 function Field({ label, required, value, onChange }) {
   return (
     <div>
-      <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">{label}</label>
+      <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">{label}</label>
       <input
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg bg-navy-950 border border-white/10 px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400"
+        className="w-full rounded-lg bg-brand-paper border border-black/10 px-4 py-2.5 text-sm focus:outline-none focus:border-brand-green-600"
       />
     </div>
   );

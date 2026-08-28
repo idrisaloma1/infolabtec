@@ -20,7 +20,7 @@ export default function FromOurClassroom() {
     <section className="py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div ref={ref} className="reveal text-center max-w-2xl mx-auto">
-          <p className="text-cyan-400 text-sm font-semibold tracking-[0.2em] uppercase">From Our Classroom</p>
+          <p className="text-brand-green-600 text-sm font-semibold tracking-[0.2em] uppercase">From Our Classroom</p>
           <h2 className="mt-3 font-display font-bold text-3xl md:text-4xl">Real Learning. Real Projects. Real Creativity.</h2>
         </div>
 
@@ -31,7 +31,7 @@ export default function FromOurClassroom() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link to="/gallery" className="inline-flex rounded-full border border-white/20 px-6 py-3 text-sm font-semibold hover:bg-white/10 transition">
+          <Link to="/gallery" className="inline-flex rounded-full border border-black/15 px-6 py-3 text-sm font-semibold hover:bg-black/5 transition">
             Explore Class Activities
           </Link>
         </div>

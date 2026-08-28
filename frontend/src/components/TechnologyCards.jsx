@@ -16,12 +16,12 @@ function Card({ tech, delay }) {
   return (
     <div
       ref={ref}
-      className="reveal rounded-2xl border border-white/10 bg-navy-800/60 p-6 hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-300"
+      className="reveal rounded-2xl border border-black/10 bg-white/70 p-6 hover:border-brand-green-500/50 hover:-translate-y-1 transition-all duration-300"
       style={{ animationDelay: `${delay}ms` }}
     >
       <span className="text-3xl">{tech.icon}</span>
       <h3 className="mt-4 font-display font-semibold text-lg">{tech.title}</h3>
-      <p className="mt-2 text-sm text-white/60 leading-relaxed">{tech.desc}</p>
+      <p className="mt-2 text-sm text-brand-ink/60 leading-relaxed">{tech.desc}</p>
     </div>
   );
 }
@@ -33,7 +33,7 @@ export default function TechnologyCards() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div ref={headingRef} className="reveal text-center max-w-2xl mx-auto">
           <h2 className="font-display font-bold text-3xl md:text-4xl">What We Teach</h2>
-          <p className="mt-3 text-white/60">
+          <p className="mt-3 text-brand-ink/60">
             Practical, hands-on technology education — built around doing, not just watching.
           </p>
         </div>

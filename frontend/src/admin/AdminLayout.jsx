@@ -28,11 +28,12 @@ export default function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen flex bg-navy-950">
-      <aside className="w-56 shrink-0 border-r border-white/10 bg-navy-900/60 pt-8 hidden md:flex md:flex-col">
+    <div className="min-h-screen flex bg-brand-paper">
+      <aside className="w-56 shrink-0 border-r border-black/10 bg-brand-mist/70 pt-8 hidden md:flex md:flex-col">
         <div className="px-5 pb-6">
+          <img src="/infolab-logo.jpg" alt="INFOLAB Technology Services" className="h-8 w-auto rounded mb-2" />
           <p className="font-display font-bold text-sm">
-            INFOLAB <span className="text-cyan-400">ADMIN</span>
+            TECH BRIDGE <span className="text-brand-red-500">ADMIN</span>
           </p>
         </div>
         <nav className="flex-1 space-y-1 px-3">
@@ -43,7 +44,7 @@ export default function AdminLayout() {
               end={item.end}
               className={({ isActive }) =>
                 `block rounded-lg px-3 py-2 text-sm transition-colors ${
-                  isActive ? "bg-cyan-400/10 text-cyan-400" : "text-white/60 hover:bg-white/5 hover:text-white"
+                  isActive ? "bg-brand-green-500/10 text-brand-green-600" : "text-brand-ink/60 hover:bg-black/5 hover:text-brand-ink"
                 }`
               }
             >
@@ -51,24 +52,24 @@ export default function AdminLayout() {
             </NavLink>
           ))}
         </nav>
-        <button onClick={logout} className="m-3 rounded-lg px-3 py-2 text-sm text-left text-white/50 hover:bg-white/5 hover:text-white">
+        <button onClick={logout} className="m-3 rounded-lg px-3 py-2 text-sm text-left text-brand-ink/50 hover:bg-black/5 hover:text-brand-ink">
           Log Out
         </button>
       </aside>
 
       <div className="flex-1 min-w-0">
-        <header className="md:hidden flex items-center justify-between border-b border-white/10 px-4 py-3">
+        <header className="md:hidden flex items-center justify-between border-b border-black/10 px-4 py-3">
           <p className="font-display font-bold text-sm">INFOLAB ADMIN</p>
-          <button onClick={logout} className="text-xs text-white/50">Log Out</button>
+          <button onClick={logout} className="text-xs text-brand-ink/50">Log Out</button>
         </header>
-        <nav className="md:hidden flex gap-2 overflow-x-auto px-4 py-2 border-b border-white/10">
+        <nav className="md:hidden flex gap-2 overflow-x-auto px-4 py-2 border-b border-black/10">
           {NAV.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.end}
               className={({ isActive }) =>
-                `whitespace-nowrap rounded-full px-3 py-1 text-xs ${isActive ? "bg-cyan-400 text-navy-950" : "bg-white/5 text-white/60"}`
+                `whitespace-nowrap rounded-full px-3 py-1 text-xs ${isActive ? "bg-brand-green-500 text-white" : "bg-black/5 text-brand-ink/60"}`
               }
             >
               {item.label}

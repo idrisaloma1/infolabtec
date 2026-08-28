@@ -78,9 +78,9 @@ export default function ManageEvents() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-display font-bold text-2xl">Events</h1>
-          <p className="mt-1 text-sm text-white/50">Manage upcoming events and the homepage countdown.</p>
+          <p className="mt-1 text-sm text-brand-ink/50">Manage upcoming events and the homepage countdown.</p>
         </div>
-        <button onClick={startNew} className="rounded-full bg-cyan-400 text-navy-950 text-sm font-semibold px-4 py-2">
+        <button onClick={startNew} className="rounded-full bg-brand-green-500 text-white text-sm font-semibold px-4 py-2">
           + New Event
         </button>
       </div>
@@ -92,26 +92,26 @@ export default function ManageEvents() {
               key={ev.id}
               onClick={() => startEdit(ev)}
               className={`w-full text-left rounded-lg border px-3 py-2.5 text-sm transition-colors ${
-                selected === ev.id ? "border-cyan-400 bg-cyan-400/10" : "border-white/10 bg-navy-800/40 hover:bg-white/5"
+                selected === ev.id ? "border-brand-green-600 bg-brand-green-500/10" : "border-black/10 bg-white/50 hover:bg-black/5"
               }`}
             >
               <p className="font-medium truncate">{ev.title}</p>
-              <p className="mt-0.5 text-xs text-white/40">{new Date(ev.date).toLocaleDateString()} · {ev.published ? "Published" : "Unpublished"}</p>
+              <p className="mt-0.5 text-xs text-brand-ink/40">{new Date(ev.date).toLocaleDateString()} · {ev.published ? "Published" : "Unpublished"}</p>
             </button>
           ))}
-          {events.length === 0 && <p className="text-sm text-white/30">No events yet.</p>}
+          {events.length === 0 && <p className="text-sm text-brand-ink/40">No events yet.</p>}
         </div>
 
         {selected && (
-          <form onSubmit={handleSave} className="rounded-xl border border-white/10 bg-navy-800/40 p-6 space-y-4">
+          <form onSubmit={handleSave} className="rounded-xl border border-black/10 bg-white/50 p-6 space-y-4">
             <Field label="Event Name" required value={form.title} onChange={(v) => setForm((f) => ({ ...f, title: v }))} />
             <div>
-              <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">Program Description</label>
+              <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">Program Description</label>
               <textarea
                 rows={3}
                 value={form.description}
                 onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-                className="w-full rounded-lg bg-navy-950 border border-white/10 px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400"
+                className="w-full rounded-lg bg-brand-paper border border-black/10 px-4 py-2.5 text-sm focus:outline-none focus:border-brand-green-600"
               />
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
@@ -126,8 +126,8 @@ export default function ManageEvents() {
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">Event Banner</label>
-              <input type="file" accept="image/*" onChange={(e) => setBanner(e.target.files[0])} className="text-xs text-white/50" />
+              <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">Event Banner</label>
+              <input type="file" accept="image/*" onChange={(e) => setBanner(e.target.files[0])} className="text-xs text-brand-ink/50" />
             </div>
 
             <label className="flex items-center gap-2 text-sm">
@@ -135,14 +135,14 @@ export default function ManageEvents() {
               Published
             </label>
 
-            {error && <p className="text-sm text-red-400">{error}</p>}
+            {error && <p className="text-sm text-red-600">{error}</p>}
 
             <div className="flex items-center gap-3 pt-2">
-              <button type="submit" disabled={saving} className="rounded-full bg-gradient-to-r from-electric-500 to-cyan-400 px-6 py-2.5 text-sm font-semibold text-navy-950 disabled:opacity-50">
+              <button type="submit" disabled={saving} className="rounded-full bg-gradient-to-r from-brand-green-500 to-brand-red-500 px-6 py-2.5 text-sm font-semibold text-white disabled:opacity-50">
                 {saving ? "Saving…" : "Save"}
               </button>
               {selected !== "new" && (
-                <button type="button" onClick={() => handleDelete(selected)} className="text-sm text-red-400 hover:underline">
+                <button type="button" onClick={() => handleDelete(selected)} className="text-sm text-red-600 hover:underline">
                   Delete Event
                 </button>
               )}
@@ -157,13 +157,13 @@ export default function ManageEvents() {
 function Field({ label, required, type = "text", value, onChange }) {
   return (
     <div>
-      <label className="block text-xs uppercase tracking-wider text-white/50 mb-1.5">{label}</label>
+      <label className="block text-xs uppercase tracking-wider text-brand-ink/50 mb-1.5">{label}</label>
       <input
         type={type}
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg bg-navy-950 border border-white/10 px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400"
+        className="w-full rounded-lg bg-brand-paper border border-black/10 px-4 py-2.5 text-sm focus:outline-none focus:border-brand-green-600"
       />
     </div>
   );

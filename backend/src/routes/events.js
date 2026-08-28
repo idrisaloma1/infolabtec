@@ -5,6 +5,12 @@ import { upload } from "../middleware/upload.js";
 
 const router = Router();
 
+// Empty strings from a blank <input type="date"> should mean "no value",
+// not literal text — Postgres rejects "" for a date/numeric column outright.
+function emptyToNull(value) {
+  return value === "" || value === undefined ? null : value;
+}
+
 // GET /api/events/next — the soonest upcoming published event
 router.get("/next", async (req, res) => {
   const { rows } = await pool.query(
@@ -43,8 +49,8 @@ router.post("/", requireAdmin, async (req, res) => {
        (title, description, date, time, venue, age_range, registration_deadline,
         registration_fee, available_seats, registration_url, published)
      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
-    [title, description, date, time, venue, age_range, registration_deadline,
-     registration_fee, available_seats, registration_url, published]
+    [title, description, date, emptyToNull(time), venue, age_range, emptyToNull(registration_deadline),
+     registration_fee, emptyToNull(available_seats), registration_url, published]
   );
   res.status(201).json({ event: rows[0] });
 });
@@ -61,17 +67,17 @@ router.put("/:id", requireAdmin, async (req, res) => {
        title = COALESCE($1, title),
        description = COALESCE($2, description),
        date = COALESCE($3, date),
-       time = COALESCE($4, time),
+       time = $4,
        venue = COALESCE($5, venue),
        age_range = COALESCE($6, age_range),
-       registration_deadline = COALESCE($7, registration_deadline),
+       registration_deadline = $7,
        registration_fee = COALESCE($8, registration_fee),
-       available_seats = COALESCE($9, available_seats),
+       available_seats = $9,
        registration_url = COALESCE($10, registration_url),
        published = COALESCE($11, published)
      WHERE id = $12 RETURNING *`,
-    [title, description, date, time, venue, age_range, registration_deadline,
-     registration_fee, available_seats, registration_url, published, req.params.id]
+    [title, description, date, emptyToNull(time), venue, age_range, emptyToNull(registration_deadline),
+     registration_fee, emptyToNull(available_seats), registration_url, published, req.params.id]
   );
   if (!rows[0]) return res.status(404).json({ error: "Event not found" });
   res.json({ event: rows[0] });
