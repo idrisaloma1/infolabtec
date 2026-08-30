@@ -6,7 +6,7 @@ const NAV = [
   { to: "/admin/projects", label: "Portfolio" },
   { to: "/admin/events", label: "Events" },
   { to: "/admin/gallery", label: "Gallery" },
-  { to: "/admin/messages", label: "Messages" },
+  { to: "/admin/registrations", label: "Registrations" },
   { to: "/admin/stats", label: "Homepage Stats" },
 ];
 

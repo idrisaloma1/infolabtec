@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-
 const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Us" },
@@ -9,17 +8,14 @@ const NAV_LINKS = [
   { to: "/next-event", label: "Next Event" },
   { to: "/contact", label: "Contact Us" },
 ];
-
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
@@ -33,7 +29,6 @@ export default function Header() {
             TECH <span className="text-brand-red-500">BRIDGE</span>
           </span>
         </Link>
-
         <nav className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <NavLink
@@ -49,14 +44,12 @@ export default function Header() {
             </NavLink>
           ))}
         </nav>
-
         <Link
-          to="/next-event"
+          to="/register"
           className="hidden lg:inline-flex items-center rounded-full bg-gradient-to-r from-brand-green-500 to-brand-red-500 px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition"
         >
           Register For Next Event
         </Link>
-
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
@@ -67,7 +60,6 @@ export default function Header() {
           <span className={`block h-0.5 w-6 bg-brand-ink transition ${open ? "-translate-y-2 -rotate-45" : ""}`} />
         </button>
       </div>
-
       {open && (
         <div className="lg:hidden bg-brand-mist border-t border-black/10 px-5 py-4 space-y-3">
           {NAV_LINKS.map((link) => (
@@ -81,7 +73,7 @@ export default function Header() {
             </NavLink>
           ))}
           <Link
-            to="/next-event"
+            to="/register"
             onClick={() => setOpen(false)}
             className="block text-center rounded-full bg-gradient-to-r from-brand-green-500 to-brand-red-500 px-5 py-3 text-sm font-semibold text-white"
           >

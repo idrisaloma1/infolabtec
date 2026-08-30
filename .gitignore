@@ -1,0 +1,7 @@
+node_modules/
+*.log
+*.zip
+.env
+dist/
+backend/uploads/
+frontend/dist/

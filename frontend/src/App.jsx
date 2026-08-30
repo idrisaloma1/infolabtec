@@ -21,6 +21,8 @@ import ManageEvents from "./admin/pages/ManageEvents.jsx";
 import ManageGallery from "./admin/pages/ManageGallery.jsx";
 import ManageMessages from "./admin/pages/ManageMessages.jsx";
 import ManageStats from "./admin/pages/ManageStats.jsx";
+import Register from "./pages/Register.jsx";
+import ManageRegistrations from "./admin/pages/ManageRegistrations.jsx";
 
 function PublicLayout({ children }) {
   return (
@@ -44,6 +46,7 @@ export default function App() {
       <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
       <Route path="/portfolio/:id" element={<PublicLayout><ProjectDetail /></PublicLayout>} />
       <Route path="/next-event" element={<PublicLayout><NextEvent /></PublicLayout>} />
+      <Route path="/register" element={<PublicLayout><Register /></PublicLayout>} />
       <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
 
       {/* Admin */}
@@ -62,6 +65,7 @@ export default function App() {
         <Route path="events" element={<ManageEvents />} />
         <Route path="gallery" element={<ManageGallery />} />
         <Route path="messages" element={<ManageMessages />} />
+        <Route path="registrations" element={<ManageRegistrations />} />
         <Route path="stats" element={<ManageStats />} />
       </Route>
     </Routes>

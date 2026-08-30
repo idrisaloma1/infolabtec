@@ -59,9 +59,16 @@ CREATE TABLE IF NOT EXISTS gallery_albums (
   created_at  TIMESTAMPTZ DEFAULT now()
 );
 
-ALTER TABLE media
-  ADD CONSTRAINT media_gallery_fk
-  FOREIGN KEY (gallery_id) REFERENCES gallery_albums(id) ON DELETE CASCADE;
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_constraint WHERE conname = 'media_gallery_fk'
+  ) THEN
+    ALTER TABLE media
+      ADD CONSTRAINT media_gallery_fk
+      FOREIGN KEY (gallery_id) REFERENCES gallery_albums(id) ON DELETE CASCADE;
+  END IF;
+END $$;
 
 CREATE TABLE IF NOT EXISTS projects (
   id           SERIAL PRIMARY KEY,
@@ -97,6 +104,20 @@ CREATE TABLE IF NOT EXISTS events (
   created_at         TIMESTAMPTZ DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS event_registrations (
+  id               SERIAL PRIMARY KEY,
+  full_name        TEXT NOT NULL,
+  address          TEXT,
+  school           TEXT,
+  age              INTEGER,
+  email            TEXT NOT NULL,
+  is_club_member   BOOLEAN NOT NULL DEFAULT false,
+  parent_phone     TEXT,
+  event_type       TEXT NOT NULL CHECK (event_type IN ('Bootcamp','Anniversary','Online Meeting')),
+  created_at       TIMESTAMPTZ DEFAULT now(),
+  UNIQUE (email, event_type)
+);
+
 CREATE TABLE IF NOT EXISTS messages (
   id          SERIAL PRIMARY KEY,
   name        TEXT NOT NULL,
@@ -129,3 +150,4 @@ CREATE INDEX IF NOT EXISTS idx_projects_published ON projects(published);
 CREATE INDEX IF NOT EXISTS idx_projects_featured ON projects(featured);
 CREATE INDEX IF NOT EXISTS idx_media_activity ON media(activity_id);
 CREATE INDEX IF NOT EXISTS idx_media_gallery ON media(gallery_id);
+CREATE INDEX IF NOT EXISTS idx_event_registrations_event_type ON event_registrations(event_type);

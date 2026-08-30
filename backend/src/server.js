@@ -13,6 +13,7 @@ import eventsRoutes from "./routes/events.js";
 import galleryRoutes from "./routes/gallery.js";
 import messagesRoutes from "./routes/messages.js";
 import statsRoutes from "./routes/stats.js";
+import registrationsRoutes from "./routes/registrations.js";
 
 dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -33,6 +34,7 @@ app.use("/api/events", eventsRoutes);
 app.use("/api/gallery", galleryRoutes);
 app.use("/api/messages", messagesRoutes);
 app.use("/api/stats", statsRoutes);
+app.use("/api/registrations", registrationsRoutes);
 
 // Serve built frontend (Vite output copied into backend/public at build time)
 const frontendDist = path.join(__dirname, "..", "public");
