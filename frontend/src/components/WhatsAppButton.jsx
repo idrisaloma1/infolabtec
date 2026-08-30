@@ -1,5 +1,5 @@
 // Replace with the real INFOLAB WhatsApp number in international format, no leading +.
-const WHATSAPP_NUMBER = "234XXXXXXXXXX";
+const WHATSAPP_NUMBER = "2348072889844";
 
 export default function WhatsAppButton() {
   return (

@@ -40,11 +40,11 @@ export default function Contact() {
           <div className="mt-8 space-y-3 text-sm">
             <p className="text-brand-ink/70">📍 Lagos, Nigeria</p>
             <p className="text-brand-ink/70">✉️ hello@infolabtechbridge.com</p>
-            <p className="text-brand-ink/70">📞 +234 XXX XXX XXXX</p>
+            <p className="text-brand-ink/70">📞 +234 807 288 9844</p>
           </div>
 
           <a
-            href="https://wa.me/234XXXXXXXXXX"
+            href="https://wa.me/2348072889844"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-brand-ink hover:opacity-90 transition"
