@@ -1,5 +1,4 @@
 import multer from "multer";
-import AdmZip from "adm-zip";
 import express from "express";
 import "express-async-errors"; // must load before route files, so their handlers get wrapped
 import cors from "cors";
@@ -44,24 +43,6 @@ app.get(/^(?!\/api|\/uploads).*/, (req, res) => {
   res.sendFile(path.join(frontendDist, "index.html"));
 });
 
-// TEMPORARY: one-time migration route to seed uploads/ on a fresh deploy.
-// Remove this route after migration is complete.
-const migrateUpload = multer({ storage: multer.memoryStorage() });
-app.post("/api/migrate-uploads", migrateUpload.single("zipfile"), (req, res) => {
-  if (req.headers["x-migrate-secret"] !== process.env.SETUP_SECRET) {
-    return res.status(403).json({ error: "Forbidden" });
-  }
-  if (!req.file) {
-    return res.status(400).json({ error: "No file uploaded" });
-  }
-  try {
-    const zip = new AdmZip(req.file.buffer);
-    zip.extractAllTo(path.join(process.cwd(), "uploads"), true);
-    res.json({ message: "Uploads extracted successfully" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
 // Centralized error handler (e.g. multer file-type/size rejections, DB errors
 // from express-async-errors, or anything else thrown in a route)
